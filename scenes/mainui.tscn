@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d07xacb8wvtgq"]
+
+[ext_resource type="Texture2D" uid="uid://binoio7mqkbw7" path="res://WhatsApp Image 2026-09-27 at 22.34.52.jpeg" id="1_hdcb6"]
+[ext_resource type="FontFile" uid="uid://jptg06pxsm55" path="res://fonts/bebas_neue/BebasNeue-Regular.otf" id="2_k8xeo"]
+[ext_resource type="Script" uid="uid://ctp5fdb3qwihc" path="res://scripts/mainui.gd" id="2_payeh"]
+[ext_resource type="PackedScene" uid="uid://cblf1rq1o0k2r" path="res://scenes/game.tscn" id="3_k2m04"]
+[ext_resource type="AudioStream" uid="uid://delcbmsyn1cn3" path="res://sounds/music.mp3" id="5_pu7md"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1300779282]
+offset_right = 1920.0
+offset_bottom = 1074.0
+texture = ExtResource("1_hdcb6")
+script = ExtResource("2_payeh")
+main_game_scene = ExtResource("3_k2m04")
+
+[node name="Play" type="Button" parent="." unique_id=309335155]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 127.0
+offset_top = -405.0
+offset_right = 435.0
+offset_bottom = -317.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_k8xeo")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[node name="Exit" type="Button" parent="." unique_id=971310993]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 127.0
+offset_top = -276.0
+offset_right = 435.0
+offset_bottom = -188.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_k8xeo")
+theme_override_font_sizes/font_size = 50
+text = "Exit
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1073531884]
+stream = ExtResource("5_pu7md")
+volume_db = -26.431

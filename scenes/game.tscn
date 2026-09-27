@@ -1,0 +1,324 @@
+[gd_scene format=3 uid="uid://cblf1rq1o0k2r"]
+
+[ext_resource type="AudioStream" uid="uid://dstn0d7p7f622" path="res://sounds/background.mp3" id="2_dinhu"]
+[ext_resource type="Script" uid="uid://cc15xol4elrxt" path="res://scripts/player.gd" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d37l62pwbcqlx" path="res://models/snowy_mountain_v2_-_terrain.glb" id="3_kvuet"]
+[ext_resource type="PackedScene" uid="uid://b1hdqwkoi7juu" path="res://scenes/model.scn" id="3_lnu2h"]
+[ext_resource type="FontFile" uid="uid://nxda3wuofrrk" path="res://fonts/modenine-font/Modenine-2OPd.ttf" id="4_kvpfn"]
+[ext_resource type="Script" uid="uid://c5i8tw4fowj2g" path="res://scripts/radio_message.gd" id="4_lbhrr"]
+[ext_resource type="AudioStream" uid="uid://delcbmsyn1cn3" path="res://sounds/music.mp3" id="4_trtic"]
+[ext_resource type="AudioStream" uid="uid://c2wy20hp6evmj" path="res://sounds/steps.mp3" id="5_ir15t"]
+[ext_resource type="AudioStream" uid="uid://dxygihishdagr" path="res://sounds/radio.mp3" id="5_iywne"]
+[ext_resource type="Script" uid="uid://c8cf3qy1gikxs" path="res://scripts/cctv_system.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://c402y8pxt0at0" path="res://scripts/game_text.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://cvpr50tmpohh8" path="res://scripts/game_state.gd" id="8_gee14"]
+[ext_resource type="Script" uid="uid://ydvr4547kfvn" path="res://scripts/game_state_debug.gd" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://bblg1f73ngi4f" path="res://scripts/ai_manager.gd" id="10_kvpfn"]
+[ext_resource type="Script" uid="uid://bp2qrlp7fnuyt" path="res://scripts/rooms.gd" id="10_vtaks"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvuet"]
+sky_top_color = Color(0.09339782, 0.12095105, 0.15765178, 1)
+sky_horizon_color = Color(0.19028923, 0.19460866, 0.203251, 1)
+sky_curve = 0.005770952
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.32289985, 0.32955745, 0.34288564, 1)
+
+[sub_resource type="Sky" id="Sky_dinhu"]
+sky_material = SubResource("ProceduralSkyMaterial_kvuet")
+
+[sub_resource type="Environment" id="Environment_kvpfn"]
+background_mode = 2
+sky = SubResource("Sky_dinhu")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8410d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8410d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tnpc"]
+size = Vector3(7.674944, 3.904419, 9.228722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtaks"]
+size = Vector3(14.203203, 3.904419, 10.321585)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8410d"]
+size = Vector3(10.168282, 3.904419, 9.228722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvpfn"]
+size = Vector3(25.165545, 3.904419, 4.7325697)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dinhu"]
+size = Vector3(6.9711018, 3.904419, 5.5827823)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8410d"]
+emission_shape = 1
+emission_sphere_radius = 21.92
+direction = Vector3(1.325, 0, 0)
+spread = 180.0
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rawgq"]
+radius = 0.05
+height = 0.1
+
+[node name="game" type="Node3D" unique_id=1278969619]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=338023377]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 12.110645, 0)
+light_energy = 0.086
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1814202177]
+environment = SubResource("Environment_kvpfn")
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=1241956987 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6128693, 1.6290267, 13.144537)
+script = ExtResource("2_lnu2h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=418104650]
+shape = SubResource("CapsuleShape3D_8410d")
+
+[node name="Head" type="Node3D" parent="player" unique_id=669911474]
+
+[node name="Camera3D" type="Camera3D" parent="player/Head" unique_id=1988666018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49643707, 0.00992775)
+current = true
+
+[node name="RadioHoldPosition" type="Marker3D" parent="player/Head/Camera3D" unique_id=494816652]
+transform = Transform3D(0.9562255, 0.27022022, 0.1123112, 0.10532551, 0.040263284, -0.9936223, -0.2730188, 0.9619562, 0.0100396965, -0.30658865, -0.23070335, -0.51854515)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="player" unique_id=1295677177]
+stream = ExtResource("2_dinhu")
+volume_db = -37.127
+autoplay = true
+
+[node name="Sketchfab_Scene" parent="player" unique_id=729499173 instance=ExtResource("3_kvuet")]
+transform = Transform3D(0.72194576, 0, -9.9739065, 0, 10, 0, 9.9739065, 0, 0.72194576, -18.739347, -0.43482018, -130.56778)
+
+[node name="AudioListener3D" type="AudioStreamPlayer3D" parent="player" unique_id=126081704]
+stream = ExtResource("4_trtic")
+volume_db = -31.823
+autoplay = true
+
+[node name="steps" type="AudioStreamPlayer3D" parent="player" unique_id=883020448]
+stream = ExtResource("5_ir15t")
+volume_db = 3.536
+
+[node name="model" parent="." unique_id=790164241 instance=ExtResource("3_lnu2h")]
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=1024899907]
+
+[node name="InteractionPrompt" type="Label" parent="InteractionUI" unique_id=198209998]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 130.0
+offset_right = 36.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[E]  OPEN"
+
+[node name="RadioMessage" type="Control" parent="InteractionUI" unique_id=1912995999]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_lbhrr")
+
+[node name="MessagePanel" type="Panel" parent="InteractionUI/RadioMessage" unique_id=1295273680]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -147.0
+offset_right = 358.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8410d")
+
+[node name="MessageText" type="Label" parent="InteractionUI/RadioMessage/MessagePanel" unique_id=873968951]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -27.5
+offset_right = 223.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.60524404, 0.9644992, 0.65958905, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6313726)
+theme_override_fonts/font = ExtResource("4_kvpfn")
+theme_override_font_sizes/font_size = 23
+text = "Emergency beacon is offline.
+Restore power and activate the emergency beacon."
+horizontal_alignment = 1
+
+[node name="RadioStatic" type="AudioStreamPlayer" parent="InteractionUI/RadioMessage" unique_id=1337257423]
+stream = ExtResource("5_iywne")
+
+[node name="GameText" type="Control" parent="InteractionUI" unique_id=1900165077]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_u5sy4")
+
+[node name="Text" type="Label" parent="InteractionUI/GameText" unique_id=1034615698]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -64.0
+offset_right = 20.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9938893, 0.9999983, 0.8639426, 1)
+theme_override_font_sizes/font_size = 21
+text = "Objective"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="InteractionUI" unique_id=941860426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CCTVSystem" type="Node3D" parent="." unique_id=319298478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.55463, 2.1009765, 1.1285394)
+script = ExtResource("6_p57ef")
+
+[node name="SubViewport" type="SubViewport" parent="CCTVSystem" unique_id=2090031901]
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="CCTVSystem/SubViewport" unique_id=2035201080]
+transform = Transform3D(-0.094455294, 0, 0.9955291, 0, 1, 0, -0.9955291, 0, -0.094455294, 12.55463, 2.1009765, 1.1285394)
+visible = false
+current = true
+
+[node name="GameState" type="Node" parent="." unique_id=863460889]
+script = ExtResource("8_gee14")
+
+[node name="GameStateDebug" type="Control" parent="." unique_id=1584958634]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_0tnpc")
+
+[node name="Panel" type="Panel" parent="GameStateDebug" unique_id=147799864]
+layout_mode = 1
+offset_right = 182.0
+offset_bottom = 286.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tnpc")
+
+[node name="Text" type="Label" parent="GameStateDebug/Panel" unique_id=933834498]
+layout_mode = 0
+offset_right = 183.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="AIManager" type="Node" parent="." unique_id=966157541]
+script = ExtResource("10_kvpfn")
+
+[node name="Areas" type="Node3D" parent="." unique_id=909828724]
+
+[node name="Room_Quarters" type="Area3D" parent="Areas" unique_id=2071395806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3565702, 0, 12.099899)
+script = ExtResource("10_vtaks")
+room_name = "Crew Quarters"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Room_Quarters" unique_id=445883106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017089844, 1.9341593, -0.054750443)
+shape = SubResource("BoxShape3D_0tnpc")
+
+[node name="Room_Control" type="Area3D" parent="Areas" unique_id=801684134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3323545, 0, 0.83353615)
+script = ExtResource("10_vtaks")
+room_name = "Control Room"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Room_Control" unique_id=771020100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05090332, 1.9341593, 0.82898045)
+shape = SubResource("BoxShape3D_vtaks")
+
+[node name="Room_Generator" type="Area3D" parent="Areas" unique_id=1058738986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.581936, 0, 0.83353615)
+script = ExtResource("10_vtaks")
+room_name = "Generator Room"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Room_Generator" unique_id=1712968946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42657852, 1.9341593, 0.22570229)
+shape = SubResource("BoxShape3D_8410d")
+
+[node name="Room_Corridor" type="Area3D" parent="Areas" unique_id=854401450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.930269, 0, -7.2432213)
+script = ExtResource("10_vtaks")
+room_name = "Corridor"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Room_Corridor" unique_id=1985424040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22919941, 1.9341593, 0.6404748)
+shape = SubResource("BoxShape3D_kvpfn")
+
+[node name="Room_Beacon" type="Area3D" parent="Areas" unique_id=535973508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.136763, 0, -12.060937)
+script = ExtResource("10_vtaks")
+room_name = "Beacon"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Room_Beacon" unique_id=497540357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09759617, 1.9341593, -0.35839748)
+shape = SubResource("BoxShape3D_dinhu")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1575940210 instance=ExtResource("3_kvuet")]
+transform = Transform3D(-3.944799, 0, -9.189045, 0, 9.999999, 0, 9.189045, 0, -3.944799, -59.939625, -6.762287, 97.33026)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1788664408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.354433, 39.064003)
+amount = 2000
+lifetime = 0.02
+preprocess = 0.13
+randomness = 0.41
+process_material = SubResource("ParticleProcessMaterial_8410d")
+draw_pass_1 = SubResource("SphereMesh_rawgq")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=958439048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5885105, 13.354433, -40.440994)
+amount = 2000
+lifetime = 0.34
+preprocess = 0.13
+randomness = 0.41
+process_material = SubResource("ParticleProcessMaterial_8410d")
+draw_pass_1 = SubResource("SphereMesh_rawgq")

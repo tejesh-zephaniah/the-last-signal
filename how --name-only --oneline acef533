@@ -1,0 +1,26 @@
+[33macef533[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m  added few interactive objects templates
+ scenes/game.tscn              |  35 [32m++++++[m[31m-[m
+ scenes/model.scn              | Bin [31m11671119[m -> [32m12212764[m bytes
+ scripts/cctv_system.gd        |  94 [32m++++++++++++++++++[m[31m-[m
+ scripts/controlpanel_1.gd     |  17 [32m++++[m
+ scripts/controlpanel_1.gd.uid |   1 [32m+[m
+ scripts/controlpanel_2.gd     |  28 [32m++++++[m
+ scripts/controlpanel_2.gd.uid |   1 [32m+[m
+ scripts/emergency.gd          |  28 [32m++++++[m
+ scripts/emergency.gd.uid      |   1 [32m+[m
+ scripts/game_state.gd         |   6 [32m++[m
+ scripts/game_state.gd.uid     |   1 [32m+[m
+ scripts/game_text.gd          |  29 [32m++++++[m
+ scripts/game_text.gd.uid      |   1 [32m+[m
+ scripts/laptop.gd             |  17 [32m++++[m
+ scripts/laptop.gd.uid         |   1 [32m+[m
+ scripts/monitor_2.gd          |  14 [32m+++[m
+ scripts/monitor_2.gd.uid      |   1 [32m+[m
+ scripts/player.gd             |  25 [32m++++[m[31m-[m
+ scripts/radio.gd              |  18 [32m++[m[31m--[m
+ scripts/radio_message.gd      |   6 [32m+[m[31m-[m
+ scripts/switch_box.gd         | 213 [32m++++++++++++++++++++++++++++++++++++++++++[m
+ scripts/switch_box.gd.uid     |   1 [32m+[m
+ sounds/generator.mp3          | Bin [31m0[m -> [32m1964544[m bytes
+ sounds/generator.mp3.import   |  19 [32m++++[m
+ 24 files changed, 543 insertions(+), 14 deletions(-)

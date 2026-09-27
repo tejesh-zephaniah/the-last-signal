@@ -1,0 +1,70 @@
+[gd_scene format=4 uid="uid://nuevee0si51n"]
+
+[ext_resource type="Texture2D" uid="uid://dnr03sceoqw74" path="res://models/floor/seamless__floor_tiled_texture_iv_0.png" id="1_whr1e"]
+[ext_resource type="Texture2D" uid="uid://cgrr7kft2v03k" path="res://models/floor/seamless__floor_tiled_texture_iv_1.png" id="2_3lc0u"]
+[ext_resource type="Texture2D" uid="uid://cfcen8sfci5cc" path="res://models/floor/seamless__floor_tiled_texture_iv_2.png" id="3_7525o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwev"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_whr1e")
+metallic = 1.0
+metallic_texture = ExtResource("2_3lc0u")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_3lc0u")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_7525o")
+ao_enabled = true
+ao_texture = ExtResource("2_3lc0u")
+uv1_scale = Vector3(20, 20, 20)
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ls1vs"]
+_surfaces = [{
+"aabb": AABB(-3, -3, 0, 6, 6, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AABAwAAAQMAAAAAAAABAQAAAQEAAAAAAAABAQAAAQMAAAAAAAABAwAAAQEAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7avop"]
+resource_name = "Sketchfab_Scene_Plane_Material_0"
+_surfaces = [{
+"aabb": AABB(-3, -3, 0, 6, 6, 1e-05),
+"attribute_data": PackedByteArray("AACAvwAAgL8AAABAAAAAQAAAAEAAAIC/AACAvwAAAEA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_imwev"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AABAwAAAQMAAAAAAAABAQAAAQEAAAAAAAABAQAAAQMAAAAAAAABAwAAAQEAAAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ls1vs")
+
+[node name="floor" type="Node3D" unique_id=1946081697]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Sketchfab_model" type="Node3D" parent="." unique_id=700027821]
+transform = Transform3D(1, 0, 0, 0, 2.220446e-16, 1, 0, -1, 2.220446e-16, 0, 0, 0)
+
+[node name="eae64983828341f093a36863cb32b9ea_fbx" type="Node3D" parent="Sketchfab_model" unique_id=958058934]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+
+[node name="RootNode" type="Node3D" parent="Sketchfab_model/eae64983828341f093a36863cb32b9ea_fbx" unique_id=1826137703]
+
+[node name="Plane" type="Node3D" parent="Sketchfab_model/eae64983828341f093a36863cb32b9ea_fbx/RootNode" unique_id=1573856184]
+transform = Transform3D(1, 0, 0, 0, -1.6292068e-07, 1, 0, -1, -1.6292068e-07, 0, 0, 0)
+
+[node name="Plane_Material_0" type="MeshInstance3D" parent="Sketchfab_model/eae64983828341f093a36863cb32b9ea_fbx/RootNode/Plane" unique_id=5083775]
+mesh = SubResource("ArrayMesh_7avop")
